@@ -1,5 +1,4 @@
 import os
-import logging
 import sqlite3
 from utilties.structures import *
 from utilties.logging import *
@@ -9,12 +8,9 @@ from utilties.data_filler import *
 studentlst = []
 
 
-
+setup()
 
 if os.path.isfile("db\\StudentsDatabase.db"):
     database2py(c,studentlst)
     log("loading database")
-
-
-logging.debug("yo there")
 
