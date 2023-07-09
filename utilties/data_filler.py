@@ -68,3 +68,7 @@ def create_tables(c):
             studentid INTEGER NOT NULL,
             FOREIGN KEY(studentid) REFERENCES Students(id)
             );""")
+    
+def show_student_lst(studentlst:list):
+    for i in studentlst:
+        print(i)
