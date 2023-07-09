@@ -1,19 +1,18 @@
 from random import randint, choice
-from randomdata import firstnames,lastnames,majors
+from utilties.structures import student,grade_book
+from utilties.randomdata import firstnames,lastnames,majors
 
 
-def add2list(id:int,name:str,lname:str,major:str,grades:dict, year:int):
-    global c,studentlist
+
+def add2list(c,studentlist:list,id:int,name:str,lname:str,major:str,grades:dict, year:int):
     c.execute('INSERT INTO Students VALUES (?,?,?,?,?)',(id,name,lname,major,year))
     studentlist.append(student(id,name,lname,major,grades, year))
     for k in grades:
         c.execute('INSERT INTO Grades VALUES (?,?,?)',(k,grades[k],id))
 
-idcounter = 0 
 
-def fill_random_data(n):
-    
-    global idcounter,conn
+def fill_random_data(c,conn,studentlist,n,idcounter) -> int:
+    n += idcounter
     while (idcounter<n):
         dd = {
             
@@ -24,13 +23,14 @@ def fill_random_data(n):
             'course e': randint(10,20),
             'course f': randint(10,20)
         }
-        add2list(idcounter,choice(firstnames),choice(lastnames),choice(majors),dd,randint(0,4))
+        add2list(c,studentlist,idcounter,choice(firstnames),choice(lastnames),choice(majors),dd,randint(0,4))
         idcounter+=1
         print(idcounter)
     conn.commit()
+    return idcounter
 
 
-def remove(id) -> int:
+def remove(c,studentlist:list,id) -> int:
     try:
         c.execute("DELETE FROM Students WHERE id=?;",(id,))
         for stud in studentlist:
@@ -41,5 +41,30 @@ def remove(id) -> int:
         print(Exception)
         return 0
 
-def database2py():
-    pass
+def database2py(c,studentlist:list):
+    c.execute("SELECT * FROM Students")
+    studs = c.fetchall().copy()
+    dd:dict = {}
+    for id,n,l,m,y in studs:
+        c.execute("SELECT * FROM Grades where studentid=?",(id,))
+        for mdl,g,i in c.fetchall():
+            dd[mdl] = g
+        studentlist.append(student(id,n,l,m,dd,y))
+        dd.clear()
+
+
+def create_tables(c):
+    c.execute("""CREATE TABLE IF NOT EXISTS Students(
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            lname TEXT NOT NULL,
+            major TEXT NOT NULL,
+            year INTEGER DEFAULT 0 NOT NULL);""")
+
+
+    c.execute("""CREATE TABLE IF NOT EXISTS GRADES(
+            module TEXT NOT NULL,
+            grd INTEGER DEFAULT NULL,
+            studentid INTEGER NOT NULL,
+            FOREIGN KEY(studentid) REFERENCES Students(id)
+            );""")
