@@ -2,7 +2,7 @@ class student:
     def __init__(self,id:int,name:str,lname:str,major:str,grades:dict, year:int=0) -> None:
         self.id = id
         self.name= name
-        self.lname = lname
+        self.lnamename = lname
         self.major = major
         self.year = year
         self.grades = grade_book(grades,major)
