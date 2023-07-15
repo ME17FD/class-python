@@ -47,9 +47,10 @@ def database2py(c,studentlist:list):
     dd:dict = {}
     for id,n,l,m,y in studs:
         c.execute("SELECT * FROM Grades where studentid=?",(id,))
-        for mdl,g,i in c.fetchall():
+        table = c.fetchall()
+        for mdl,g,i in table:
             dd[mdl] = g
-        studentlist.append(student(id,n,l,m,dd,y))
+        studentlist.append(student(id,n,l,m,dd.copy(),y))
         dd.clear()
 
 

@@ -18,7 +18,7 @@ class ListApp(tk.Tk):
         self.config(bg="lightgrey")
         page = ttk.Treeview(self)
         page.place(relx=.2,rely=.028,width= int(1280*.8),height=int(720*.972))
-        
+        page.configure(selectmode='extended')
         page.configure(columns=("Name","Last Name","Major","Year"))
         page.heading("#0",text="ID",anchor="w")
         page.heading("Name",text="Name",anchor="w")
@@ -40,6 +40,10 @@ class ListApp(tk.Tk):
 
         self.fill_list_stdnts(page,liste)
 
+        butt1 = self.create_btn('mult')
+        butt1.pack(anchor=tk.W)
+        butt2 = self.create_btn('2222')
+        butt2.pack(anchor=tk.W)
         
     def create_btn(self, mode): 
         cmd = lambda: self.list.config(selectmode=mode) 
@@ -74,9 +78,12 @@ class ListApp(tk.Tk):
             btn.pack(side=tk.LEFT)
 
     def fill_list_stdnts(self,page,studliste:student):
+        stndt:student
         for stndt in studliste:
-            page.insert('','end',text=f"{stndt.id:04d}",iid=stndt.id,values=(stndt.name,stndt.lname,stndt.major,stndt.year))
-
+            page.insert('','end',text=f"{(stndt.id):04d}",iid=stndt.id,values=(stndt.name,stndt.lname,stndt.major,stndt.year))
+            for i in stndt.grades.grades:
+                page.insert(stndt.id,'end',text=f"{(stndt.id):04d}",values=(i,stndt.grades.grades[i],None,None))
+                
 if __name__ == "__main__": 
     app = ListApp(DAYS) 
     app.mainloop() 

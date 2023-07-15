@@ -21,8 +21,10 @@ else:
     log("database not found creating new one")
     create_tables(c)
 
-names = [studentlst[m].name for m in range(len(studentlst))]
-print(*names)
-
-app = ListApp(studentlst) 
-app.mainloop()
+#show_student_lst(studentlst)
+#main loop
+try:
+    app = ListApp(studentlst) 
+    app.mainloop()
+finally:
+    log("program closed")

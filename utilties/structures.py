@@ -8,7 +8,7 @@ class student:
         self.grades = grade_book(grades,major)
 
     def __str__(self) -> str:
-        return (f'Name : {self.name}\nFamily name:{self.fname}\n{self.major}\nID:{self.id:08d}      year:{self.year}')
+        return (f'Name : {self.name}\nFamily name:{self.lname}\n{self.major}\nID:{self.id:08d}      year:{self.year}')
 
 
 

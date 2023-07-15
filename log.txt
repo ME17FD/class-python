@@ -38,3 +38,66 @@ DEBUG:root:************PROGRAM STARTED : :11-07-2023 22:00:13************
 DEBUG:root:loading database :11-07-2023 22:00:13
 DEBUG:root:************PROGRAM STARTED : :11-07-2023 22:00:38************
 DEBUG:root:loading database :11-07-2023 22:00:38
+DEBUG:root:************PROGRAM STARTED : :11-07-2023 22:05:12************
+DEBUG:root:loading database :11-07-2023 22:05:12
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 12:58:50************
+DEBUG:root:loading database :15-07-2023 12:58:50
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:00:04************
+DEBUG:root:loading database :15-07-2023 13:00:04
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:28:10************
+DEBUG:root:loading database :15-07-2023 13:28:10
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:29:08************
+DEBUG:root:loading database :15-07-2023 13:29:08
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:38:42************
+DEBUG:root:loading database :15-07-2023 13:38:42
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:44:44************
+DEBUG:root:loading database :15-07-2023 13:44:44
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:45:52************
+DEBUG:root:loading database :15-07-2023 13:45:52
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:47:15************
+DEBUG:root:loading database :15-07-2023 13:47:15
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 13:48:20************
+DEBUG:root:loading database :15-07-2023 13:48:20
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:24:17************
+DEBUG:root:loading database :15-07-2023 14:24:17
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:24:48************
+DEBUG:root:loading database :15-07-2023 14:24:48
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:29:38************
+DEBUG:root:loading database :15-07-2023 14:29:38
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:29:55************
+DEBUG:root:loading database :15-07-2023 14:29:55
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:34:01************
+DEBUG:root:loading database :15-07-2023 14:34:01
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:35:31************
+DEBUG:root:loading database :15-07-2023 14:35:31
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:38:35************
+DEBUG:root:loading database :15-07-2023 14:38:36
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:39:04************
+DEBUG:root:loading database :15-07-2023 14:39:04
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:41:10************
+DEBUG:root:loading database :15-07-2023 14:41:10
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:41:32************
+DEBUG:root:loading database :15-07-2023 14:41:32
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:42:08************
+DEBUG:root:loading database :15-07-2023 14:42:08
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:42:30************
+DEBUG:root:loading database :15-07-2023 14:42:30
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:43:42************
+DEBUG:root:loading database :15-07-2023 14:43:42
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:44:39************
+DEBUG:root:loading database :15-07-2023 14:44:39
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:46:33************
+DEBUG:root:loading database :15-07-2023 14:46:34
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:47:50************
+DEBUG:root:loading database :15-07-2023 14:47:50
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:48:21************
+DEBUG:root:loading database :15-07-2023 14:48:22
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:48:47************
+DEBUG:root:loading database :15-07-2023 14:48:47
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:49:59************
+DEBUG:root:loading database :15-07-2023 14:49:59
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:50:56************
+DEBUG:root:loading database :15-07-2023 14:50:57
+DEBUG:root:************PROGRAM STARTED : :15-07-2023 14:51:20************
+DEBUG:root:loading database :15-07-2023 14:51:20
+DEBUG:root:program closed :15-07-2023 14:51:22
