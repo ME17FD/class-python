@@ -25,6 +25,8 @@ else:
 #main loop
 try:
     app = ListApp(studentlst) 
+    
     app.mainloop()
 finally:
     log("program closed")
+    os.system('cmd /c "cls"')
