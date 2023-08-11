@@ -14,16 +14,13 @@ def add2list(c,studentlist:list,id:int,name:str,lname:str,major:str,grades:dict,
 def fill_random_data(c,conn,studentlist,n,idcounter) -> int:
     n += idcounter
     while (idcounter<n):
-        dd = {
-            
-            'course a': randint(10,20),
-            'course b': randint(10,20),
-            'course c': randint(10,20),
-            'course d': randint(10,20),
-            'course e': randint(10,20),
-            'course f': randint(10,20)
-        }
-        add2list(c,studentlist,idcounter,choice(firstnames),choice(lastnames),choice(majors),dd,randint(0,4))
+        studYear = randint(1,3)
+        dd = {}
+        for i in range(studYear*12):
+            dd[f'course {i}'] = randint(10,20)
+        
+        add2list(c,studentlist,idcounter,choice(firstnames),choice(lastnames),choice(majors),dd.copy(),studYear)
+        dd.clear()
         idcounter+=1
         print(idcounter)
     conn.commit()

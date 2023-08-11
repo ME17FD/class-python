@@ -14,19 +14,21 @@ studentlst:student = []
 
 setup()
 
-if os.path.isfile(path_db):
+if  os.stat(path_db).st_size != 0:
     database2py(c,studentlst)
     log("loading database")
 else:
     log("database not found creating new one")
     create_tables(c)
+    fill_random_data(c,conn,studentlst,560,0)
 
 #show_student_lst(studentlst)
 #main loop
 try:
-    app = ListApp(studentlst) 
-    
-    app.mainloop()
+    #app = ListApp(studentlst) 
+    sapp = AddStudentPage()
+    sapp.mainloop()
+
 finally:
     log("program closed")
     os.system('cmd /c "cls"')
