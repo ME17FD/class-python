@@ -12,14 +12,18 @@ DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday",
 MODES = [tk.SINGLE, tk.BROWSE, tk.MULTIPLE, tk.EXTENDED] 
 
 class BackBone(tk.Tk):
-    def __init__(self,c,conn):
+    def __init__(self):
         super().__init__() 
         self.background = "lightgrey"
         self.set_menu()
         self.set_page("1280x720")
         self.resizable(0,0)
-        self.c = c
-        self.conn = conn
+        for i in range(8):
+            self.columnconfigure(i,weight=1)
+        
+        for i in range(8):
+            self.rowconfigure(i, weight=1)
+
         
 
 
@@ -69,7 +73,10 @@ class ListApp(BackBone):
         self.fill_list_stdnts(page,liste)
         
         butt1 = self.create_btn('print selection',self.print_selection,page)
-        butt1.pack(anchor=tk.W)
+        butt1.grid()
+        #butt2 = ttk.Button(text="buttn",command= lambda:self.fill_list_stdnts(page,liste))
+        #butt2.grid()
+
 
     def put_tree(self,page,scrollbary):
         page.place(relx=.2,rely=.028,width= int(1280*.8),height=int(720*.972))
@@ -103,42 +110,62 @@ class ListApp(BackBone):
                 page.insert(stndt.id,'end',text=f"{(stndt.id):04d}",values=(i,stndt.grades.grades[i],None,None))
 
 class AddStudentPage(BackBone):
-    def __init__(self):
+    def __init__(self,c,conn,studentlist):
         super().__init__()
-        for i in range(10):
-            self.columnconfigure(i,weight=1)
+        self.c =c
+        self.studentlist = studentlist
+        self.conn = conn
         
-        for i in range(8):
-            self.rowconfigure(i, weight=1)
 
 
         name = ttk.Label(self,text="Name",background=self.background)
-        name.grid(column=1,row=1,sticky=tk.W)
+        name.grid(column=2,row=1,sticky=tk.W)
         name_entry = ttk.Entry(self)
-        name_entry.grid(column=2,row=1,sticky=tk.EW)
+        name_entry.grid(column=3,row=1,sticky=tk.EW)
 
 
         last_name = ttk.Label(self,text="Last Name",background=self.background)
-        last_name.grid(column=3,row=1,sticky=tk.W)
+        last_name.grid(column=4,row=1,sticky=tk.W)
         last_name_entry = ttk.Entry(self)
-        last_name_entry.grid(column=4,row=1,sticky=tk.EW)
+        last_name_entry.grid(column=5,row=1,sticky=tk.EW)
 
 
         major = ttk.Label(self,text="Major",background=self.background)
-        major.grid(column=1,row=2,sticky=tk.W)
+        major.grid(column=2,row=2,sticky=tk.W)
         major_entry = ttk.Entry(self)
-        major_entry.grid(column=2,row=2,sticky=tk.EW)
+        major_entry.grid(column=3,row=2,sticky=tk.EW)
         
+        year = ttk.Label(self,text="Year",background=self.background)
+        year.grid(column=2,row=3,sticky=tk.W)
+        year_entry = ttk.Entry(self)
+        year_entry.grid(column=3,row=3,sticky=tk.EW)
+
+
+
 
         newid = ttk.Label(self,text="New ID : ",background=self.background)
-        newid.grid(column=3,row=2,sticky=tk.W)
+        newid.grid(column=4,row=2,sticky=tk.W)
+        newidlabel = ttk.Label(self,text="")
+        newidlabel.grid(column=5,row=2,sticky=tk.W)
 
 
-        addStud = ttk.Button(self,text='Add Student', command= lambda : self.add_stud(name_entry,last_name_entry,major_entry))
+        addStud = ttk.Button(self,text='Add Student', command= lambda :
+                                self.add_stud(name_entry.get(),last_name_entry.get(),major_entry.get(),year_entry.get(),newidlabel))
+        
         addStud.grid(column=2,columnspan=2,row=3,rowspan=2,sticky=tk.EW)
 
-    def add_stud(self,name_entry,last_name_entry,major_entry):
-        print(name_entry.get())
+    
+    
+    def add_stud(self,name_entry,last_name_entry,major_entry,year,newidlabel):
+        
+        newID = self.studentlist[-1].id +1
+        add2list(self.c,self.studentlist, newID ,name_entry,last_name_entry,major_entry,{},year)
+        newidlabel.config(text=newID)
+        self.conn.commit()
+
+
+
+
 
 
 if __name__ == "__main__":
