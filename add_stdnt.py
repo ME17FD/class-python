@@ -4,7 +4,6 @@ from utilties.structures import *
 from utilties.logging import *
 from gui.gui import *
 
-
 path_db = "db\\StudentsDatabase11.db"
 conn = sqlite3.connect(path_db)
 c = conn.cursor()
@@ -25,10 +24,11 @@ else:
 #show_student_lst(studentlst)
 #main loop
 try:
-    app = ListApp(studentlst,c,conn) 
-    app.mainloop()
+
+    sapp = AddStudentPage(c,conn,studentlst)
+    sapp.mainloop()
 
 finally:
     log("program closed")
     conn.commit()
-    os.system('cmd /c "cls"')
+    #os.system('cmd /c "cls"')

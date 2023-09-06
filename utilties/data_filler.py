@@ -1,6 +1,7 @@
 from random import randint, choice
 from utilties.structures import student,grade_book
 from utilties.randomdata import firstnames,lastnames,majors
+import os
 
 
 
@@ -27,9 +28,10 @@ def fill_random_data(c,conn,studentlist,n,idcounter) -> int:
     return idcounter
 
 
-def remove(c,studentlist:list,id) -> int:
+def remove(c,conn,studentlist:list,id) -> int:
     try:
         c.execute("DELETE FROM Students WHERE id=?;",(id,))
+        c.execute("DELETE FROM Grades WHERE studentid=?;",(id,))
         for stud in studentlist:
             if stud.id == id:
                 studentlist.remove(stud)
@@ -37,6 +39,7 @@ def remove(c,studentlist:list,id) -> int:
     except Exception:
         print(Exception)
         return 0
+    conn.commit()
 
 def database2py(c,studentlist:list):
     c.execute("SELECT * FROM Students")
@@ -49,6 +52,22 @@ def database2py(c,studentlist:list):
             dd[mdl] = g
         studentlist.append(student(id,n,l,m,dd.copy(),y))
         dd.clear()
+    studs.clear()
+
+def updatepy(c,studentlist:list):
+    studentlist.clear()
+    c.execute("SELECT * FROM Students")
+    studs = c.fetchall().copy()
+    dd:dict = {}
+    for id,n,l,m,y in studs:
+        c.execute("SELECT * FROM Grades where studentid=?",(id,))
+        table = c.fetchall()
+        for mdl,g,i in table:
+            dd[mdl] = g
+        studentlist.append(student(id,n,l,m,dd.copy(),y))
+        dd.clear()
+    studs.clear()
+
 
 
 def create_tables(c):
@@ -70,3 +89,7 @@ def create_tables(c):
 def show_student_lst(studentlst:list):
     for i in studentlst:
         print(i)
+
+
+if __name__ == "__main__":
+    os.system('cmd /c "py main.py"')
